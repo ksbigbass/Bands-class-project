@@ -1,98 +1,173 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>John's Bands</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
+<head>
+<html lang="en">
+  <meta charset="utf-8">
 
-  <body>
+  <title>John's Bands</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 
-    <video autoplay muted loop id="myVideo">
-      <source src="Digital_Mixer__Motor_Faders_CLOSE.mp4" type="video/mp4">
-    </video>
+<body>
 
-    <nav class="navbar">
-      <ul class="nav-list">
-        <li><a href="index.html">Main</a></li>
-        <li><a href="john.html">Home</a></li>
-        <li><a href="rap.html">Rap</a></li>
-        <li><a href="rock.html">Rock</a></li>
-        <li><a href="country.html">Country</a></li>
-        <div id="pause-button-container">
-          <button id="myBtn" onclick="myFunction()">Pause</button>
-        </div>
-      </ul>
-    </nav>
+  <video autoplay muted loop id="myVideo">
+    <source src="Digital_Mixer__Motor_Faders_CLOSE.mp4" type="video/mp4">
+  </video>
+
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li><a href="index.html">Main</a></li>
+      <li><a href="john.html">Home</a></li>
+      <li><a href="rap.html">Rap</a></li>
+      <li><a href="rock.html">Rock</a></li>
+      <li><a href="country.html">Country</a></li>
+      <li><a href="form.html">Form</a></li>
+    </ul>
+
+
+    <div id="pause-button-container">
+        <button id="myBtn" onclick="myFunction()">Pause</button>
+      </div>
+  </nav>
+
+  <h1>Some of John's favorite bands</h1>
+  <hr>
+<div>
+  
+  <blockquote>A collection of some artists that I have enjoyed over time and would like to share them with you.<br>
+    Below you will find a few pages linking to each artist and some of their music, that I enjoy and maybe you will too.<br>
+    This is <b>BOLD</b> and this is <em>italics.</em> 
+    <br>
+  </blockquote>
+  <aside><sup>This is Sup!</sup>  This isn't  <sub>this is sub</sub></aside>
+ 
+</div>
+  <div id= "table">
+    <h3>Table</h3>
     
-    <h1>Some of John's favorite bands</h1>
-
-    <blockquote>A collection of some artists that I have enjoyed over time and would like to share them with you.<br>
-      Below you will find a few pages linking to each artist and some of their music, that I enjoy and maybe you will too.</blockquote>
-    </div> <!--end of main_container-->
-    <div id="copy">Copyright <sup>&copy</sup> 2023 <br />John Henderson</div> 
-    </div> <!-- /* Last div  */ -->
-    <script>
-      //for background video and button
-      // Get the video
-      var video = document.getElementById("myVideo");
-        
-      // Get the button
-      var btn = document.getElementById("myBtn");
+      <table>
+      <tr>
+        <th>rap</th>
+        <th>rock</th>
+        <th>country</th>
+      </tr>
+      <tr>
+        <td>Tech N9ne</td>
+        <td>Metallica</td>
+        <td>Nirvana</td>
+      </tr>
+      <tr>
+        <td>Jeris Johnson</td>
+        <td>Led Zepplin</td>
+        <td>Johnny Cash</td>
+      </tr>
+      <tr>
+        <td>Mac Miller</td>
+        <td>Tool</td>
+        <td>Dead South</td>
+      </tr>
+    </table>       
+  </div>
+  <h3 style="background-color: beige;">nested lists</h3>
+  <div id="list1">
     
-      // Pause and play the video, and change the button text
-      function myFunction() {
-        if (video.paused) {
-          video.play();
-          btn.innerHTML = "Pause";
-        } else {
-          video.pause();
-          btn.innerHTML = "Play";
+    <h4>Unordered</h4>
+    <ul>
+      <li>float</li>
+      <li>Left 
+        <ol>
+          <li>Sub ordered One</li>
+          <li>Sub ordered Two</li>
+          <li>Sub ordered Three</li>
+        </ol>
+      </li>
+    </ul>
+  </div>
+  <div id="list2">
+    <h4>Ordered</h4>
+    <ol>
+      <li>float</li>
+      <li>right
+        <ul>
+          <li>Sub Unordered One</li>
+          <li>Sub Unordered Two</li>
+          <li>Sub Unordered Three</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <!--end of main_container-->
+
+  <div id="footer"> 
+     <cite>I wrote this</cite>
+  </div>
+
+  <div id="copy">
+    Copyright <sup>&copy</sup> 2023 <br>John Henderson 
+  </div> <!-- /* Last div  */ -->
+
+
+  <script>
+    //for background video and button
+    // Get the video
+    var video = document.getElementById("myVideo");
+
+    // Get the button
+    var btn = document.getElementById("myBtn");
+
+    // Pause and play the video, and change the button text
+    function myFunction() {
+      if (video.paused) {
+        video.play();
+        btn.innerHTML = "Pause";
+      } else {
+        video.pause();
+        btn.innerHTML = "Play";
+      }
+    }
+
+    var player;
+
+    function changeVideo(videoId) {
+      player.loadVideoById(videoId);
+    }
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: '',
+        playerVars: {
+          'playsinline': 1
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
         }
-      }
-    
-      var player;
-    
-      function changeVideo(videoId) {
-        player.loadVideoById(videoId);
-      }
-    
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          height: '390',
-          width: '640',
-          videoId: '',
-          playerVars: {
-            'playsinline': 1
-          },
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-    
-      function onPlayerReady(event) {
-        event.target.playVideo();
-      }
-    
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
-        }
-      }
-    
-      function stopVideo() {
-        player.stopVideo();
-      }
-    
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); 
-    </script>
-  </body>
+      });
+    }
 
-  <!--build a copyright with sub and sup made by John Henderson-->
-</html> 
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+
+    var done = false;
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+      }
+    }
+
+    function stopVideo() {
+      player.stopVideo();
+    }
+
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); 
+  </script>
+</body>
+
+</html>
