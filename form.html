@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <meta charset="utf-8">
+  <head>
+
+    <title>Basic HTML Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a href="index.html">Main</a></li>
+        <li><a href="john.html">Home</a></li>
+        <li><a href="rap.html">Rap</a></li>
+        <li><a href="rock.html">Rock</a></li>
+        <li><a href="country.html">Country</a></li>
+        <li><a href="form.html">Form</a></li>
+      </ul>
+
+  
+      <div id="pause-button-container">
+          <button id="myBtn" onclick="myFunction()">Pause</button>
+        </div>
+    </nav>
+    <h1>This is a picture and form</h1>
+    <div id="form-container">
+      <img src="form.jpg" alt="Form Picture" id="form-pic">
+
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required><br><br>
+          
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required><br><br>
+          
+        <label for="message">Message:</label><br>      
+        <textarea name="message" id="message" required></textarea><br><br>
+          
+        <label for="shoe-brand">Choose a shoe brand:</label>
+        <select id="shoe-brand" name="shoe-brand" required>
+          <option value=""></option>
+          <option value="nike">Nike</option>
+          <option value="adidas">Adidas</option>
+          <option value="crocs">Crocs</option>
+        </select><br><br>
+          
+        <input type="radio" name="animal" value="dog"> Dog<br>
+        <input type="radio" name="animal" value="cat"> Cat<br>
+        <input type="radio" name="animal" value="Dragon"> Dragon<br><br>
+          
+        <label for="textbox">Text Box:</label>
+        <input type="text" id="textbox" name="textbox" required><br><br>
+        <input id="my-form" type="submit" value="Submit">
+
+      </form>
+
+      </div>
+      <div id="formSubmit">
+      </div>
+
+      <script>
+        const myForm = document.querySelector('#my-form');
+        
+        myForm.addEventListener('submit', function(event) {
+          if (!myForm.checkValidity()) {
+            event.preventDefault();
+            alert('Please fill out all required fields.');
+          }
+        });
+      </script>
+      
+      
+  </body>
+</html>
