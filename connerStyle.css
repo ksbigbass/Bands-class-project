@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('images/main-large.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  #middleBands {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    column-gap: 20px;
+    height: 100vh;
+  }
+  
+  .items-bands{
+    text-decoration: none;
+    padding: 10px;
+    color: black;
+    font-size: 40px;
+  }
+  #items{
+    text-align: center;
+    align-items: center;
+    display: flex;
+    transition: opacity 400ms ease;
+  }
+  #items:hover > .items-bands{
+    opacity: 0.3;
+  }
+  #items:hover > .items-bands:hover{
+    opacity: 1;
+  }
+ #bandPages{
+  display: flex;
+  height: 100vh;
+ }
+

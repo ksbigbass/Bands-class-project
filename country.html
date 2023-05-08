@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Country</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="script.js"></script>
+
+
+  </head>
+
+  <body>
+
+    <video autoplay muted loop id="myVideo">
+      <source src="DogWheat.mp4" type="video/mp4">
+    </video>
+
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a href="index.html">Main</a></li>
+        <li><a href="john.html">Home</a></li>
+        <li><a href="rap.html">Rap</a></li>
+        <li><a href="rock.html">Rock</a></li>
+        <li><a href="country.html">Country</a></li>
+        <div id="pause-button-container">
+        <button id="myBtn" onclick="myFunction()">Pause</button>
+        </div>
+      </ul>
+    </nav>
+      
+    <h1>Country Artists</h1>
+    
+        <div class="container">
+            <div class="box">
+              <h3>Dead South</h3>
+              <p>The Dead South is a folk-bluegrass musical ensemble based in Regina, Saskatchewan, Canada. 
+                The band was initially formed in 2012 as a quartet by Nate Hilts (vocals, guitar, mandolin),
+                 Scott Pringle (guitar, mandolin, vocals), Danny Kenyon (cello, vocals) and Colton Crawford (banjo). 
+              </p>
+              <ul>
+                <li><a href="#" onclick="changeVideo('5y4qmWF9TIM');showPlayer(); return false;">Banjo Odyssey</a></li>
+              </ul>
+            </div>
+    
+            <div class="box">
+              <h3>Johnny Cash</h3>
+                <p>Johnny Cash was a badass that once shot a man just to watch him die.</p>
+              <ul>
+                <li><a href="#" onclick="changeVideo('uXWjIUmAiOE');showPlayer(); return false;">Ring of Fire</a></li>
+                <li><a href="#" onclick="changeVideo('dprBkLeS_Eo');showPlayer(); return false;">Hurt 6:26 start</a></li>
+              </ul>
+            </div>
+    
+            <div class="box">
+              <h3>Nirvana</h3>
+              <p>Nirvana was an American rock band formed in Aberdeen, Washington, in 1987. Founded by lead singer and guitarist Kurt Cobain and bassist Krist Novoselic, the band went through a succession of drummers, most notably Chad Channing, and then recruited Dave Grohl in 1990.</p>
+              <ul>
+                <li><a href="#" onclick="changeVideo('Wi9_GhUWxpg');showPlayer(); return false;">Smells Like Teen Spirit</a></li>
+                <li><a href="#" onclick="changeVideo('vabnZ9-ex7o');showPlayer(); return false;">fix me</a></li>
+              </ul>
+            </div>
+  
+    </div> <!--end of container-->
+    <div id="player"></div> <!--Youtube player-->
+
+    <div id="copy">Copyright <sup>&copy</sup> 2023 <br />John Henderson</div> 
+
+
+    </div> <!-- /* Last div  */ -->
+
+    <script>
+      //for background video and button
+      // Get the video
+      var video = document.getElementById("myVideo");
+        
+      // Get the button
+      var btn = document.getElementById("myBtn");
+    
+      // Pause and play the video, and change the button text
+      function myFunction() {
+        if (video.paused) {
+          video.play();
+          btn.innerHTML = "Pause";
+        } else {
+          video.pause();
+          btn.innerHTML = "Play";
+        }
+      }
+    
+      function changeVideo(videoId) {
+        if (videoId) {
+          player.loadVideoById(videoId);
+        } else {
+          player.loadVideoById('kbyGHDMPA7E');
+        }
+        document.getElementById("player-container").classList.toggle("expand");
+      }
+
+      var player;
+
+function changeVideo(videoId) {
+  if (videoId) {
+    player.loadVideoById(videoId);
+  } else {
+    player.loadVideoById('kbyGHDMPA7E');
+  }
+}
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: '',
+    playerVars: {
+      'playsinline': 1
+    },
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+var done = false;
+
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    setTimeout(stopVideo, 6000);
+    done = true;
+  }
+}
+
+function stopVideo() {
+  player.stopVideo();
+}
+
+function showPlayer() {
+  var playerDiv = document.getElementById('player');
+  
+  playerDiv.style.display = 'block';
+  
+}
+
+document.getElementById("player").addEventListener("click", function() {
+  changeVideo();
+});
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    
+
+    </script>
+
+  </body>
+ </html>

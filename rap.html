@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rap</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+
+  </head>
+
+  <body>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+
+    <video autoplay muted loop id="myVideo">
+      <source src="nerd_slow_music.mp4" type="video/mp4">
+    </video>
+
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a href="index.html">Main</a></li>
+        <li><a href="john.html">Home</a></li>
+        <li><a href="rap.html">Rap</a></li>
+        <li><a href="rock.html">Rock</a></li>
+        <li><a href="country.html">Country</a></li>
+        <div id="pause-button-container">
+        <button id="myBtn" onclick="myFunction()">Pause</button>
+        </div>
+      </ul>
+    </nav>
+    
+    <h1>Rap and HipHop</h1>
+
+        <div class="container">
+            <div class="box">
+              <h3>Tech N9ne</h3>
+              <p>Aaron Dontez Yates (born November 8, 1971), better known by his stage name Tech N9ne (pronounced "tech nine"), 
+                is an American rapper. In 1999, he and business partner Travis O'Guin founded the record label Strange Music.
+                 He has sold over two million albums and has had his music featured in film, television, and video games.
+                 In 2009, he won the Left Field Woodie award at the mtvU Woodie Awards.</p>              
+                 
+              <ul>
+                <li><a href="#" onclick="changeVideo('UW2QoShtHgE'); showPlayer(); return false;">Like I Ain't</a></li>
+              </ul>
+            </div>
+    
+            <div class="box">
+              <h3>Jeris Johnson</h3>
+                <p>Johnson was born in Rock Island, Illinois. He moved to East St. Louis, Illinois at the age of nine and was raised by foster parents after his parents split up. At age 16 he moved back to Rock Island to live with his father Jackwood Johnson. Johnson began playing guitar when he was 15,
+                   honing his chops in local rock bands such as Treacherous Funk, Pilot, and Dealer, throughout his teens and early twenties. </p>           
+                
+              <ul>
+                <li><a href="#" onclick="changeVideo('ajyJ5b6OCZU'); showPlayer(); return false;">D*mn</a></li>
+              </ul>
+            </div>
+    
+            <div class="box">
+              <h3>Mac Miller</h3>
+              <p>Born Malcolm James McCormick in Pittsburgh, Pennsylvania in 1992, Mac Miller began his music career at a young age,
+                 releasing his first mixtape at just 15 years old. He quickly gained a following in the underground hip-hop scene and
+                  went on to release several successful albums, including "Watching Movies with the Sound Off" and "Swimming." </p>              
+              <ul>
+                <li><a href="#" onclick="changeVideo('hyT_dt_vw3s'); showPlayer(); return false;">Trump</a></li>
+              </ul>
+            </div>
+  
+    </div> <!--end of container-->
+
+      <div id="player"></div>
+  
+    <div id="copy">Copyright <sup>&copy</sup> 2023 <br />John Henderson</div> 
+
+    </div> <!-- /* Last div  */ -->
+
+    <script>
+      //for background video and button
+      // Get the video
+      var video = document.getElementById("myVideo");
+        
+      // Get the button
+      var btn = document.getElementById("myBtn");
+    
+      // Pause and play the video, and change the button text
+      function myFunction() {
+        if (video.paused) {
+          video.play();
+          btn.innerHTML = "Pause";
+        } else {
+          video.pause();
+          btn.innerHTML = "Play";
+        }
+      }
+    
+      function changeVideo(videoId) {
+        if (videoId) {
+          player.loadVideoById(videoId);
+        } else {
+          player.loadVideoById('kbyGHDMPA7E');
+        }
+        document.getElementById("player-container").classList.toggle("expand");
+      }
+
+      var player;
+
+function changeVideo(videoId) {
+  if (videoId) {
+    player.loadVideoById(videoId);
+  } else {
+    player.loadVideoById('kbyGHDMPA7E');
+  }
+}
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: '',
+    playerVars: {
+      'playsinline': 1
+    },
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+var done = false;
+
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    setTimeout(stopVideo, 6000);
+    done = true;
+  }
+}
+
+function stopVideo() {
+  player.stopVideo();
+}
+
+function showPlayer() {
+  var playerDiv = document.getElementById('player');
+  
+  playerDiv.style.display = 'block';
+  
+}
+
+document.getElementById("player").addEventListener("click", function() {
+  changeVideo();
+});
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    
+
+    </script>
+
+  </body>
+</html>

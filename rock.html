@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="script.js"></script>
+
+  </head>
+
+  <body>
+
+    <video autoplay muted loop id="myVideo">
+      <source src="rotting-christ-1275.mp4" type="video/mp4">
+    </video>
+
+      <nav class="navbar">
+        <ul class="nav-list">
+          <li><a href="index.html">Main</a></li>
+          <li><a href="john.html">Home</a></li>
+          <li><a href="rap.html">Rap</a></li>
+          <li><a href="rock.html">Rock</a></li>
+          <li><a href="country.html">Country</a></li>
+          <div id="pause-button-container">
+          <button id="myBtn" onclick="myFunction()">Pause</button>
+          </div>
+        </ul>
+      </nav>
+          
+  
+    <h1>Rock Bands</h1>
+  
+    
+        <div class="container">
+            <div class="box">
+              <h3>Metallica</h3>
+              <p>Metallica is an American heavy metal band. The band was formed in 1981 in Los Angeles by vocalist/guitarist James Hetfield and drummer Lars Ulrich, and has been based in San Francisco for most of its career.</p>
+              <ul>
+                <li><a href="#" onclick="changeVideo('kbyGHDMPA7E');showPlayer(); return false;">Master of Puppets</a></li>
+                <li><a href="#" onclick="changeVideo('5U-rSxTTgys');showPlayer(); return false;">One</a></li>
+              </ul>
+            </div>
+    
+            <div class="box">
+              <h3>Led Zepplin</h3>
+              <p>Led Zeppelin were an English rock band formed in London in 1968. The group comprised vocalist Robert Plant, guitarist Jimmy Page, bassist/keyboardist John Paul Jones, and drummer John Bonham.</p>
+              <ul>
+                <li><a href="#" onclick="changeVideo('xH-_9cwdLug');showPlayer(); return false;">When the Levee Breaks</a></li>
+                <li><a href="#" onclick="changeVideo('bIbrsg0RnXQ');showPlayer(); return false;">Whole lotta love</a></li>
+              </ul>
+            </div>
+    
+            <div class="box">
+              <h3>Tool</h3>
+              <p>Tool is an American rock band formed in Los Angeles, California in 1990.
+                 Known for their dark and introspective music, Tool has released five studio albums.</p>
+              <ul>
+                <li><a href="#" onclick="changeVideo('u7lweNCCwS0'); showPlayer(); return false;">Sober</a></li>
+              </ul>
+            </div>
+  
+    </div> <!--end of container-->
+    <div id="player"></div> <!--Youtube player-->
+
+    <div id="copy">Copyright <sup>&copy</sup> 2023 <br />John Henderson</div> 
+
+
+   </div> <!-- /* Last div  */ -->
+
+   <script>
+    //for background video and button
+    // Get the video
+    var video = document.getElementById("myVideo");
+      
+    // Get the button
+    var btn = document.getElementById("myBtn");
+  
+    // Pause and play the video, and change the button text
+    function myFunction() {
+      if (video.paused) {
+        video.play();
+        btn.innerHTML = "Pause";
+      } else {
+        video.pause();
+        btn.innerHTML = "Play";
+      }
+    }
+  
+    function changeVideo(videoId) {
+      if (videoId) {
+        player.loadVideoById(videoId);
+      } else {
+        player.loadVideoById('kbyGHDMPA7E');
+      }
+      document.getElementById("player-container").classList.toggle("expand");
+    }
+
+    var player;
+
+function changeVideo(videoId) {
+if (videoId) {
+  player.loadVideoById(videoId);
+} else {
+  player.loadVideoById('kbyGHDMPA7E');
+}
+}
+
+function onYouTubeIframeAPIReady() {
+player = new YT.Player('player', {
+  height: '390',
+  width: '640',
+  videoId: '',
+  playerVars: {
+    'playsinline': 1
+  },
+  events: {
+    'onReady': onPlayerReady,
+    'onStateChange': onPlayerStateChange
+  }
+});
+}
+
+function onPlayerReady(event) {
+event.target.playVideo();
+}
+
+var done = false;
+
+function onPlayerStateChange(event) {
+if (event.data == YT.PlayerState.PLAYING && !done) {
+  setTimeout(stopVideo, 6000);
+  done = true;
+}
+}
+
+function stopVideo() {
+player.stopVideo();
+}
+
+function showPlayer() {
+var playerDiv = document.getElementById('player');
+
+playerDiv.style.display = 'block';
+
+}
+
+document.getElementById("player").addEventListener("click", function() {
+changeVideo();
+});
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  
+
+  </script>
+  </body>
+</html>
